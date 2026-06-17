@@ -1,0 +1,80 @@
+DEBUG - 2026-06-17 05:52:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 05:52:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 05:52:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 05:52:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-17 05:52:17 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_ci4', 3306, '', 0)
+#1 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\app\Controllers\AuthController.php(32): CodeIgniter\BaseModel->first()
+#7 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\AuthController->login()
+#8 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\Kuliah\\Semes...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\app\Controllers\AuthController.php(32): CodeIgniter\BaseModel->first()
+#6 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\AuthController->login()
+#7 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 D:\Kuliah\Semester 4\Pemrograman Web Lanjut\belajar-ci\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\Kuliah\\Semes...')
+#13 {main}
+CRITICAL - 2026-06-17 05:52:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `username` = :username:
+AND `user`.`deleted_at` IS NULL
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\AuthController.php(32): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\Kuliah\\Semester 4\\Pemrograman Web Lanjut\\belajar-ci\\public\\index.php')
+DEBUG - 2026-06-17 05:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 05:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:00:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:00:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:00:45 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:08:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:08:29 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:08:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:09:41 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:30:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:30:46 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:30:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:30:52 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-06-17 06:30:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:30:54 --> Cart Class Initialized
+DEBUG - 2026-06-17 06:30:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-17 06:30:56 --> Cart Class Initialized
