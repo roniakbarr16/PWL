@@ -6,11 +6,6 @@
 
         <?= form_hidden('username', session()->get('username')) ?>
 
-        <?= form_input([
-            'type' => 'hidden', 
-            'name' => 'total_harga', 
-            'id' => 'total_harga']) ?>
-
         <div class="col-12">
             <?= form_label('Nama', 'nama', ['class' => 'form-label']) ?>
             <?= form_input([
@@ -42,6 +37,15 @@
                 'id'       => 'ongkir',
                 'class'    => 'form-control',
                 'readonly' => true]) ?>
+        </div>
+        <div class="col-12">
+            <?= form_label('Kode Kupon', 'kupon_code', ['class' => 'form-label']) ?>
+            <?= form_input([
+                'name'        => 'kupon_code',
+                'id'          => 'kupon_code',
+                'class'       => 'form-control',
+                'placeholder' => 'Masukkan kode kupon (HEMAT / SUPER)']) ?>
+            <small class="text-muted">Tersedia: HEMAT (15%), SUPER (20%)</small>
         </div>
         <div class="col-12">
             <?= form_submit(
@@ -78,14 +82,32 @@
             endif;
             ?>
             <tr>
-                <td colspan="2"></td>
-                <td>Subtotal</td>
-                <td><?= number_to_currency($total, 'IDR') ?></td>
+                <td colspan="3">Total Harga</td>
+                <td><span id="display_subtotal"><?= number_to_currency($total, 'IDR') ?></span></td>
             </tr>
             <tr>
-                <td colspan="2"></td>
-                <td>Total</td>
-                <td><span id="total"><?= number_to_currency($total, 'IDR') ?></span></td>
+                <td colspan="3">Diskon Kupon</td>
+                <td><span id="display_diskon">Rp 0</span></td>
+            </tr>
+            <tr>
+                <td colspan="3">Biaya Admin</td>
+                <td><span id="display_biaya_admin">Rp 0</span></td>
+            </tr>
+            <tr>
+                <td colspan="3">Cashback</td>
+                <td><span id="display_cashback">Rp 0</span></td>
+            </tr>
+            <tr>
+                <td colspan="3">Subtotal</td>
+                <td><span id="display_subtotal_after"><?= number_to_currency($total, 'IDR') ?></span></td>
+            </tr>
+            <tr>
+                <td colspan="3">Ongkir</td>
+                <td><span id="display_ongkir">Rp 0</span></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>Grand Total</strong></td>
+                <td><strong><span id="display_grand_total"><?= number_to_currency($total, 'IDR') ?></span></strong></td>
             </tr>
         </tbody>
         </table>
@@ -99,13 +121,37 @@ $(document).ready(function() {
     let subtotal = <?= $total ?>;
     hitungTotal();
 
+    function formatRupiah(angka) {
+        return `Rp ${Math.round(angka).toLocaleString('id-ID')}`;
+    }
+
     function hitungTotal() {
-        let total = subtotal + ongkir;
+        let kuponCode = $('#kupon_code').val().trim().toUpperCase();
+        let diskonPersen = 0;
+
+        if (kuponCode === 'HEMAT') diskonPersen = 0.15;
+        else if (kuponCode === 'SUPER') diskonPersen = 0.20;
+
+        let diskonKupon = subtotal * diskonPersen;
+        let biayaAdmin = subtotal <= 20000000 ? subtotal * 0.005 : subtotal * 0.0075;
+        let cashback = subtotal > 10000000 ? subtotal * 0.02 : 0;
+        let subtotalAfter = subtotal - diskonKupon + biayaAdmin;
+        let grandTotal = subtotalAfter + ongkir;
+
+        $('#display_subtotal').text(formatRupiah(subtotal));
+        $('#display_diskon').text(`- ${formatRupiah(diskonKupon)}`);
+        $('#display_biaya_admin').text(`+ ${formatRupiah(biayaAdmin)}`);
+        $('#display_cashback').text(formatRupiah(cashback));
+        $('#display_subtotal_after').text(formatRupiah(subtotalAfter));
+        $('#display_ongkir').text(formatRupiah(ongkir));
+        $('#display_grand_total').text(formatRupiah(grandTotal));
 
         $("#ongkir").val(ongkir);
-        $("#total").text(`IDR ${total.toLocaleString('id-ID')}`);
-        $("#total_harga").val(total);
     }
+
+    $('#kupon_code').on('input', function() {
+        hitungTotal();
+    });
 
 	$('#kelurahan').select2({
 	    placeholder: 'Cari daerah tujuan',
